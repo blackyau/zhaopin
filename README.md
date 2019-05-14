@@ -83,7 +83,7 @@ now_time = str(int(time.time() * 1000))
 random_num = str(int(random.random() * 1000000))
 
 # _v
-random_v = str(random.random())[:9]
+random_v = str(random.random())[:10]
 ```
 
 这部分主要都来自 [CSDN@学习才能变得强大 - 爬虫智联招聘](https://blog.csdn.net/qq_42583549/article/details/85015406) 感谢
