@@ -32,8 +32,6 @@ def get_sou(random_v_in, random_request_id, page=1, page_size=90, city_id=489, i
         payload.pop('industry')
 
     r = requests.get('https://fe-api.zhaopin.com/c/i/sou', headers=headers, params=payload)
-    print(random_v_in)
-    print(random_request_id)
 
     if "\"results\":[]" in r.text:
         raise Warning("返回数据异常!以下是 API 返回信息\n"+r.text)
