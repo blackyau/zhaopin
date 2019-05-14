@@ -10,7 +10,7 @@ random_id = str(md5.hexdigest())  # 32位随机ID
 now_time = str(int(time.time() * 1000))  # 时间戳
 random_num = str(int(random.random() * 1000000))  # 随机6位数
 random_all = random_id + '-' + now_time + '-' + random_num
-random_v = str(random.random())[:9]  # 随机7位小数
+random_v = str(random.random())[:10]  # 随机7位小数
 
 
 def get_sou(random_v_in, random_request_id, page=1, page_size=90, city_id=489, industry=0, kt=3, kw="", **more_information):
