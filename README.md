@@ -32,6 +32,32 @@ https://fe-api.zhaopin.com/c/i/city-page/user-city?ipCity=%E5%8C%97%E4%BA%AC
 }
 ```
 
+### 标签信息
+
+https://dict.zhaopin.cn/dict/dictOpenService/getDict
+
+| key | value | 
+| -- | -- |
+| dictNames | education,education_specialty... |
+
+可取的值非常多，可以得到所有标签的信息。
+
+https://dict.zhaopin.cn/dict/dictOpenService/getDict?dictNames=region_relation,education,recruitment,education_specialty,industry_relation,careet_status,job_type_parent,job_type_relation
+
+返回结果如下(已省略部分)
+
+```json
+var zpBaseData = zpBaseData || {};
+zpBaseData.education = [{"id":1683,"parentIntKey":0,"parentStrKey":"0","strKey":"9","intKey":9,"value":"初中",...}]
+zpBaseData.industry_relation = [{"id":500,"parentIntKey":10100,"parentStrKey":"10100","strKey":"210500","intKey":210500,"value":"互联网/电子商务",...}]
+zpBaseData.careet_status = [{"id":2916,"parentIntKey":0,"parentStrKey":"0","strKey":"1","intKey":1,"value":"离职",...}]
+zpBaseData.recruitment = [{"id":51692,"parentIntKey":0,"parentStrKey":"0","strKey":"y","intKey":1,"value":"统招",...}]
+zpBaseData.job_type_relation = [{"id":1623,"parentIntKey":100000,"parentStrKey":"100000","strKey":"2000","intKey":2000,"value":"插花设计师",...}]
+zpBaseData.region_relation = [{"id":49474,"parentIntKey":0,"parentStrKey":"0","strKey":"100930","intKey":100930,"value":"伊朗",...}]
+zpBaseData.job_type_parent = [{"id":557,"parentIntKey":0,"parentStrKey":"0","strKey":"20","intKey":20,"value":"销售|客服|市场",...}]
+zpBaseData.education_specialty = [{"id":55684,"parentIntKey":0,"parentStrKey":"0","strKey":"1","intKey":1,"value":"材料类",...}]
+```
+
 ### 搜索结果
 
 https://fe-api.zhaopin.com/c/i/sou
