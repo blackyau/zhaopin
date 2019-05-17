@@ -2,6 +2,14 @@
 
 zhaopin.com 智联招聘 爬虫
 
+## 已爬取数据
+
+全国, 北京, 上海, 广州, 深圳, 成都, 重庆
+
+与计算机有关的所有岗位信息 [data.7z](https://github.com/blackyau/zhaopin/raw/master/data.7z)
+
+正在进行数据分析...
+
 ## api 分析
 
 ### 城市ID

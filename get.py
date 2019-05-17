@@ -74,11 +74,11 @@ if __name__ == "__main__":
                     try:
                         result = sou(random_v, random_all, page_sum, 90, city, industry)
                         file.write(result.text)
-                        print("city:", city, " industry:", industry_dict[industry], " page:", page_sum, "爬取完毕 等待3s ")
-                        time.sleep(3)
-                        start_time = start_time - 3
+                        print("city:", city, " industry:", industry_dict[industry], " page:", page_sum, "爬取完毕")
+                        # time.sleep(3)
+                        # start_time = start_time - 3
                     except Warning as Warning_info:
                         print("Page", page_sum, Warning_info)
                         break
     end_time = time.time()
-    print("总共耗时:", end_time-true_start_time, "\n除去等待时间耗时:", end_time-start_time)
+    print("总共耗时:", (end_time-true_start_time)/60, "分\n除去等待时间耗时:", (end_time-start_time)/60), "分"
