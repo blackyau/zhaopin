@@ -76,7 +76,6 @@ if __name__ == "__main__":
     industry_dict = {160400: "计算机软件", 160600: "网络游戏", 160000: "IT服务", 160200: "计算机硬件", 210500: "互联网_电子商务"}
     for city in city_tup:
         for industry in industry_dict.keys():
-            # TODO 判断是否创建路径
             with open("./data/" + city + "_" + industry_dict[industry] + ".json", mode="w", encoding="utf-8") as file:
                 write_text = "{\n\"alldata\": [\n"
                 random_v, random_all = random_info()
