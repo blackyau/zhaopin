@@ -69,16 +69,21 @@ if __name__ == "__main__":
         for industry in industry_dict.keys():
             # TODO 判断是否创建路径
             with open("./data/" + city + "_" + industry_dict[industry] + ".json", mode="w", encoding="utf-8") as file:
+                write_text = "{\n\"alldata\": [\n"
                 random_v, random_all = random_info()
                 for page_sum in range(1, 13):
                     try:
                         result = sou(random_v, random_all, page_sum, 90, city, industry)
-                        file.write(result.text)
+                        write_text = write_text + result.text
+                        write_text = write_text + ", \n"
                         print("city:", city, " industry:", industry_dict[industry], " page:", page_sum, "爬取完毕")
                         # time.sleep(3)
                         # start_time = start_time - 3
                     except Warning as Warning_info:
                         print("Page", page_sum, Warning_info)
                         break
+                write_text = write_text[0:-3]
+                write_text = write_text + "\n]}"
+                file.write(write_text)
     end_time = time.time()
-    print("总共耗时:", (end_time-true_start_time)/60, "分\n除去等待时间耗时:", (end_time-start_time)/60), "分"
+    print('总共耗时:', (end_time - true_start_time) / 60, "分")
