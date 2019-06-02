@@ -3,6 +3,7 @@ import random
 import requests
 import time
 from setting import headers
+import os
 
 
 def random_info():
@@ -61,6 +62,14 @@ def sou(random_v_in, random_request_id, page=1, page_size=90, city_name="全国"
 
 
 if __name__ == "__main__":
+    work_path = os.getcwd()+"\\data"
+    work_path = work_path.replace("\\", "\\\\")
+    if os.path.exists(work_path):
+        print(work_path, "目录已存在")
+    else:
+        os.mkdir(work_path)
+        print(work_path, "目录已创建")
+
     start_time = time.time()
     true_start_time = start_time
     city_tup = ("全国", "北京", "上海", "广州", "深圳", "成都", "重庆")
