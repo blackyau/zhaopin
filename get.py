@@ -77,7 +77,7 @@ if __name__ == "__main__":
     for city in city_tup:
         for industry in industry_dict.keys():
             with open("./data/" + city + "_" + industry_dict[industry] + ".json", mode="w", encoding="utf-8") as file:
-                write_text = "{\n\"alldata\": [\n"
+                write_text = "{\n\"all_data\": [\n"
                 random_v, random_all = random_info()
                 for page_sum in range(1, 13):
                     try:
