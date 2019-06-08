@@ -89,7 +89,16 @@ if __name__ == "__main__":
                         # start_time = start_time - 3
                     except Warning as Warning_info:
                         print("Page", page_sum, Warning_info)
-                        break
+                        try:
+                            print("重试", "city:", city, " industry:", industry_dict[industry], " page:", page_sum)
+                            time.sleep(3)
+                            result = sou(random_v, random_all, page_sum, 90, city, industry)
+                            write_text = write_text + result.text
+                            write_text = write_text + ", \n"
+                            print("city:", city, " industry:", industry_dict[industry], " page:", page_sum, "爬取完毕")
+                        except Warning as Warning_info:
+                            print("重试失败,跳过...")
+                            break
                 write_text = write_text[0:-3]
                 write_text = write_text + "\n]}"
                 file.write(write_text)
