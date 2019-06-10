@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="UTF-8">
+  <title>可视化</title>
+</head>
+<body style="background-color: #f3f3f3; height: 100%">
+<div id="1" style="height: 75%; width: 90%; margin: auto"></div>
+<div id="2" style="height: 75%; width: 90%; margin: auto"></div>
+<div id="3" style="height: 75%; width: 90%; margin: auto"></div>
+<div id="4" style="height: 75%; width: 90%; margin: auto"></div>
+<div id="5" style="height: 75%; width: 90%; margin: auto"></div>
+<script src="/static/echarts.js"></script>
+<script>
+
+var point1 = echarts.init(document.getElementById("1"));
+var point2 = echarts.init(document.getElementById("2"));
+var point3 = echarts.init(document.getElementById("3"));
+var point4 = echarts.init(document.getElementById("4"));
+var point5 = echarts.init(document.getElementById("5"));
+option1 = {
+    title: {
+        left: 'center',
+        text: '薪水情况分布'
+    },
+    tooltip: {},
+    xAxis: {
+        type: 'category',
+        data: [{% for a,b in salary_count %}'{{a}}', {% endfor %}],
+        name: '薪水',
+        axisLabel: {interval:0,rotate:30}
+    },
+    yAxis: {
+        type: 'value',
+        name: '数量'
+    },
+    series: [
+    {
+        type: 'bar',
+        data: [{% for a,b in salary_count %}'{{b}}', {% endfor %}],
+        label: {show: true}
+    }
+    ]
+};
+
+option2 = {
+    title: {
+        text: '工作经验要求',
+        left: 'center'
+    },
+    tooltip: {},
+    xAxis: {
+        type: 'category',
+        data: [{% for a,b in workingExp_count %}'{{a}}', {% endfor %}],
+        name: '年份',
+        axisLabel: {interval:0, rotate:30}
+    },
+    yAxis: {
+        type: 'value',
+        name: '数量'
+    },
+    series: [
+    {
+        type: 'line',
+        data: [{% for a,b in workingExp_count %}'{{b}}', {% endfor %}],
+        label: {show: true}
+    }
+    ]
+};
+
+option3 = {
+    title: {
+        text: '学历要求',
+        left: 'center'
+    },
+    tooltip: {},
+    series: [
+    {
+        type: 'pie',
+//        roseType: 'radius',
+        data: [{% for a,b in eduLevel_count %}{value:'{{b}}', name:'{{a}}'},{% endfor %}],
+        label: {show: true}
+    }
+    ]
+};
+
+option4 = {
+    title: {
+        text: '散点图DEMO',
+        left: 'center'
+    },
+    tooltip: {},
+    xAxis: {name:'X轴'},
+    yAxis: {name:'Y轴'},
+    series: [{
+        data: [
+            [10.0, 8.04],
+            [8.0, 6.95],
+            [13.0, 7.58],
+            [9.0, 8.81],
+            [11.0, 8.33],
+            [14.0, 9.96],
+            [6.0, 7.24],
+            [4.0, 4.26],
+            [12.0, 10.84],
+            [7.0, 4.82],
+            [5.0, 5.68]
+     ],
+     type: 'scatter'
+    }
+    ]
+};
+
+option5 = {
+    title: {
+        text: '雷达图',
+        top: 'bottom',
+        left: 'center'
+    },
+    tooltip: {},
+    legend: {
+        data: ['甲', '乙']
+    },
+    radar: {
+        shape: 'circle', //圆形边缘
+        indicator: [
+            {name: '力量', max:6500},
+            {name: '智力', max:16000},
+            {name: '体力', max:30000},
+            {name: '敏捷', max:38000},
+            {name: '生命', max:52000},
+            {name: '防御', max:25000}
+        ]
+    },
+    series: [{
+        name: '甲 vs 乙',
+        type: 'radar',
+        data: [
+            {
+                value: [4300, 10000, 28000, 35000, 50000, 19000],
+                name: '甲'
+            },
+            {
+                value: [5000, 14000, 28000, 31000, 42000, 21000],
+                name: '乙'
+            }
+        ]
+    }]
+};
+point1.setOption(option1, true);
+point2.setOption(option2, true);
+point3.setOption(option3, true);
+point4.setOption(option4, true);
+point5.setOption(option5, true);
+
+</script>
+</body>
+</html>
