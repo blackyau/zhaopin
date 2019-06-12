@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%">
+<head>
+  <meta charset="UTF-8">
+  <title>手写可视化</title>
+</head>
+<body style="height:100%; background-color:#f3f3f3">
+<div id="1" style="height:90%; width:90%; margin:auto"></div>
+<div id="2" style="height:90%; width:90%; margin:auto"></div>
+<div id="3" style="height:90%; width:90%; margin:auto"></div>
+<div id="4" style="height:90%; width:90%; margin:auto"></div>
+<div id="5" style="height:90%; width:90%; margin:auto"></div>
+<script src="/static/echarts.min.js"></script>
+<script>
+
+var point1=echarts.init(document.getElementById("1"),"light");
+var point2=echarts.init(document.getElementById("2"),"light");
+var point3=echarts.init(document.getElementById("3"),"light");
+var point4=echarts.init(document.getElementById("4"),"light");
+var point5=echarts.init(document.getElementById("5"),"light");
+
+option1 = {
+    title: {
+        text: '条形图',
+        left: 'center'
+    },
+    tooltip:{},
+    xAxis: {
+        type: 'value',
+        name: 'X轴'
+    },
+    yAxis: {
+        type: 'category',
+        data: [{% for a,b in salary_count %}'{{a}}', {% endfor %}],
+        name: '数量'
+    },
+    series: [{
+        type: 'bar',
+
+        data: [{% for a,b in salary_count %}'{{b}}', {% endfor %}],
+        label: {show: true}
+    }]
+};
+
+option2 = {
+    title: {
+        text: '折线图',
+        left: 'center'
+    },
+    tooltip:{},
+    xAxis: {
+        type: 'category',
+        data: [{% for a,b in salary_count %}'{{a}}', {% endfor %}],
+        name: 'X轴'
+    },
+    yAxis: {
+        type: 'value',
+        name: '数量'
+    },
+    series: [
+    {
+        type: 'line',
+        data: [{% for a,b in salary_count %}'{{b}}', {% endfor %}],
+        label: {show: true}
+    }]
+};
+
+option3 = {
+    title: {
+        text: '饼图',
+        left: 'center'
+    },
+    tooltip:{},
+    series: [{
+        type: 'pie',
+        data: [{% for a,b in workingExp_count %}{value:'{{b}}', name:'{{a}}'}, {% endfor %}]
+    }]
+};
+
+option4 = {
+    title: {
+        text: '散点图'
+    },
+    tooltip:{},
+    xAxis:{name:'X轴'},
+    yAxis:{name:'Y轴'},
+    series:[{
+        data:[
+        [3.54, 4.56],
+        [5.46, 5.75],
+        [6.45, 1.25],
+        [3.47, 8.25],
+        [10.54, 7.35]
+    ],
+    type:'scatter'}
+    ]
+};
+
+option5 = {
+    title: {
+        text: '雷达图',
+        x: 'center',
+        y: 'bottom'
+    },
+    legend: {
+        data:['甲', '乙']
+     },
+    tooltip:{},
+    radar: {
+        shape: 'circle',
+        indicator: [
+            {name:'力量', max:1800},
+            {name:'智力', max:16000},
+            {name:'敏捷', max:18000},
+            {name:'哈哈', max:38000}
+        ]
+    },
+    series:[{
+        type:'radar',
+        name:'甲 vs 乙',
+        data:[
+            {
+                value:[1000,10000,8000,14600],
+                name:'甲'
+            },
+            {
+                value:[1300,14000,2000,31000],
+                name:'乙'
+            }
+        ]
+    }]
+};
+
+point1.setOption(option1, true);
+point2.setOption(option2, true);
+point3.setOption(option3, true);
+point4.setOption(option4, true);
+point5.setOption(option5, true);
+</script>
+</body>
+</html>

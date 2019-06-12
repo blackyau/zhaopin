@@ -106,13 +106,13 @@ eduLevel_count = sort_dict(eduLevel_count)
 salary_count = sort_dict(salary_count)
 # workingExp_count = sort_dict(workingExp_count)
 welfare_count = sort_dict(welfare_count)
-print(jobName_count)
-print(city_count)
-print(jobType_count)
-print(eduLevel_count)
-print(salary_count)
-print(workingExp_count)
-print(welfare_count)
+# print(jobName_count)
+# print(city_count)
+# print(jobType_count)
+# print(eduLevel_count)
+# print(salary_count)
+# print(workingExp_count)
+# print(welfare_count)
 
 app = Flask(__name__)
 
@@ -123,6 +123,13 @@ def index():
                            salary_count=list(salary_count.items())[:40],
                            workingExp_count=list(workingExp_count.items()),
                            eduLevel_count=list(eduLevel_count.items())
+                           )
+
+
+@app.route("/test")
+def test():
+    return render_template("test.html", salary_count=list(salary_count.items())[:40],
+                           workingExp_count=list(workingExp_count.items())
                            )
 
 
